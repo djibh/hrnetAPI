@@ -11,7 +11,6 @@ public class EmployeeDTO {
     private String postalCode;
     private String city;
     private String street;
-    private String state;
     private String startDate;
     private String birthDate;
 }

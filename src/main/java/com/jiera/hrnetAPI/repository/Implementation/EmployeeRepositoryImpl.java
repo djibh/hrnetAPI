@@ -48,7 +48,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository<Employee> {
                 .addValue("address", employee.getAddress())
                 .addValue("postalCode", employee.getPostalCode())
                 .addValue("city", employee.getCity())
-                .addValue("state", employee.getState())
                 .addValue("startDate", employee.getStartDate())
                 .addValue("birthDate", employee.getBirthDate());
     }

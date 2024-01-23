@@ -22,6 +22,6 @@ class HrnetApiApplicationTests {
 	public void testGetEmployees() throws Exception {
 		mockMvc.perform(get("/api/employees"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].firstName", is("Laurent")));
+				.andExpect(jsonPath("$[0].firstName", is("Chuck")));
 	}
 }

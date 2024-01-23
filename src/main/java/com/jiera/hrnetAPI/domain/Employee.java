@@ -34,6 +34,5 @@ public class Employee {
     private String department;
     private String address;
     private String city;
-    private String state;
 
 }

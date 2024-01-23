@@ -13,10 +13,11 @@ CREATE TABLE employees (
     department      VARCHAR(50) DEFAULT NULL,
     postal_code  VARCHAR(10) DEFAULT NULL,
     city         VARCHAR(100) DEFAULT NULL,
-    state         VARCHAR(100) DEFAULT NULL,
     start_date   DATE DEFAULT NULL,
     birth_date   DATE DEFAULT NULL
 );
  
-INSERT INTO employees (first_name, last_name, department, address, postal_code, city, state, start_date, birth_date) VALUES
-  ('Laurent', 'GINA', 'Marketing', '3, rue du soda', '75001', 'Paris', 'WA', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'));
+INSERT INTO employees (first_name, last_name, department, address, postal_code, city, start_date, birth_date) VALUES
+  ('Chuck', 'BORRIS', 'Legal', '123, Roundhouse Kick Lane', '75001', 'Walker', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
+  ('Omar', 'SIMPSON', 'Engineering', '742 Evergreen Terrace', '62701', 'Springfield', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
+  ('Barry', 'POTTER', 'Marketing', '4 Privet Drive', '10000', 'Little Whinging', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'));
