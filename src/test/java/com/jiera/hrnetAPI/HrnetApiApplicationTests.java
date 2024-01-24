@@ -19,8 +19,8 @@ class HrnetApiApplicationTests {
 	private MockMvc mockMvc;
 
 	@Test
-	public void testGetEmployees() throws Exception {
-		mockMvc.perform(get("/api/employees"))
+	public void testGetPatients() throws Exception {
+		mockMvc.perform(get("/api/patients"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].firstName", is("Chuck")));
 	}

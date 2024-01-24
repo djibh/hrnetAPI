@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jiera.hrnetAPI.domain.Employee;
+import com.jiera.hrnetAPI.domain.Patient;
 import com.jiera.hrnetAPI.domain.HttpResponse;
-import com.jiera.hrnetAPI.dto.EmployeeDTO;
-import com.jiera.hrnetAPI.service.EmployeeService;
+import com.jiera.hrnetAPI.dto.PatientDTO;
+import com.jiera.hrnetAPI.service.PatientService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,17 +27,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestControllerAdvice
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class EmployeeController {
-    private final EmployeeService employeeService;
+public class PatientController {
+    private final PatientService patientService;
 
-    @PostMapping("/employee")
-    public ResponseEntity<HttpResponse> saveEmployee(@RequestBody Employee employee) {
-        EmployeeDTO employeeDTO = employeeService.createEmployee(employee);
+    @PostMapping("/patient")
+    public ResponseEntity<HttpResponse> savepatient(@RequestBody Patient patient) {
+        PatientDTO patientDTO = patientService.createPatient(patient);
         return ResponseEntity.created(getUri()).body(
                 HttpResponse.builder()
                         .timeStamp(LocalDateTime.now().toString())
-                        .data(Map.of("user", employeeDTO))
-                        .message("Employee created")
+                        .data(Map.of("user", patientDTO))
+                        .message("patient created")
                         .status(HttpStatus.CREATED)
                         .statusCode(HttpStatus.CREATED.value())
                         .build());
@@ -48,9 +48,9 @@ public class EmployeeController {
                 .create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/get/<userId>").toUriString());
     }
 
-    @GetMapping("/employees")
-    public ResponseEntity<List<Employee>> getEmployees() {
-        return ResponseEntity.ok().body(employeeService.getEmployees());
+    @GetMapping("/patients")
+    public ResponseEntity<List<Patient>> getpatients() {
+        return ResponseEntity.ok().body(patientService.getPatients());
     }
 
 }

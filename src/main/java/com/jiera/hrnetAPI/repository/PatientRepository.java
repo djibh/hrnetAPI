@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.jiera.hrnetAPI.domain.Employee;
+import com.jiera.hrnetAPI.domain.Patient;
 
 @Repository
-public interface EmployeeRepository<T extends Employee> {
+public interface PatientRepository<T extends Patient> {
 
     T create(T data);
 
-    List<T> getAllEmployees();
+    List<T> getAllPatients();
 
 }

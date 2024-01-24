@@ -10,8 +10,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employees")
-public class Employee {
+@Table(name = "patients")
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,8 +25,8 @@ public class Employee {
     @Column(name = "postal_code")
     private String postalCode;
 
-    @Column(name = "start_date")
-    private String startDate;
+    @Column(name = "admission_date")
+    private String admissionDate;
 
     @Column(name = "birth_date")
     private String birthDate;
@@ -34,5 +34,4 @@ public class Employee {
     private String department;
     private String address;
     private String city;
-
 }
