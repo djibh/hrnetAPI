@@ -1,11 +1,11 @@
-CREATE SCHEMA IF NOT EXISTS hrnet;
+CREATE SCHEMA IF NOT EXISTS klepios;
 
 SET NAMES 'UTF8MB4'; -- used to set the character encoding for data sent between the client application and the MySQL server
 SET time_zone = '+02:00';
 
-DROP TABLE IF EXISTS patients; 
+DROP TABLE IF EXISTS Patients; 
  
-CREATE TABLE patients (
+CREATE TABLE Patients (
     id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name   VARCHAR(50) NOT NULL,
     last_name    VARCHAR(50) NOT NULL,
@@ -16,6 +16,57 @@ CREATE TABLE patients (
     admission_date   DATE DEFAULT NULL,
     birth_date   DATE DEFAULT NULL
 );
+
+DROP TABLE IF EXISTS Users;
+
+CREATE TABLE Users (
+    id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name   VARCHAR(50) NOT NULL,
+    last_name    VARCHAR(50) NOT NULL,
+    username     VARCHAR(50) NOT NULL,
+    service      VARCHAR(50) NOT NULL,
+    email        VARCHAR(255) DEFAULT NULL,
+    CONSTRAINT UQ_Users_Email UNIQUE (email),
+    CONSTRAINT UQ_Users_Username UNIQUE (username)
+);
+
+DROP TABLE IF EXISTS Services;
+
+CREATE TABLE Services (
+    id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title      VARCHAR(50) NOT NULL,
+    CONSTRAINT UQ_Services_Title UNIQUE (title)
+);
+
+-- DROP TABLE IF EXISTS Roles;
+
+-- CREATE TABLE Roles (
+--     id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     title        VARCHAR(50) NOT NULL,
+--     permissions  VARCHAR(255) DEFAULT NULL, -- admin:read,admin:delete,customer:read etc
+--     CONSTRAINT UQ_Roles_Title UNIQUE (title)
+-- );
+
+-- DROP TABLE IF EXISTS UsersRoles;
+
+-- CREATE TABLE UserRoles (
+--   id    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   user_id BIGINT UNSIGNED NOT NULL,
+--   role_id BIGINT UNSIGNED NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES Users (id),
+--   FOREIGN KEY (role_id) REFERENCES Roles (id),
+--   CONSTRAINT US_UserRoles_Id UNIQUE (user_id)
+-- );
+
+-- DROP TABLE IF EXISTS Events;
+
+-- CREATE TABLE Events 
+-- (
+--     id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     type         VARCHAR(50) NOT NULL CHECK(type IN ('LOGIN_ATTEMPT', 'LOGIN_ATTEMPT_FAILURE', 'LOGIN_ATTEMPT_SUCCESS', 'PROFILE_UPDATE', 'PROFILE_PICTURE_UPDATE', 'ROLE_UPDATE', 'ACCOUNT_SETTINGS_UPDATE', 'MFA_UPDATE')),
+--     description  VARCHAR(255) NOT NULL,
+--     CONSTRAINT UQ_Events_Type UNIQUE (type)
+-- );
  
 INSERT INTO patients (first_name, last_name, department, address, postal_code, city, admission_date, birth_date) VALUES
   ('Chuck', 'BORRIS', 'Legal', '123, Roundhouse Kick Lane', '75001', 'Walker', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
@@ -27,3 +78,18 @@ INSERT INTO patients (first_name, last_name, department, address, postal_code, c
   ('Wonder', 'WOMANIZER', 'Legal', 'Themyscira Island', '88888', 'Paradise', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Jack', 'SPARROWDOUGHNUT', 'Human Resources', 'Black Pearl', '55555', 'Tortuga', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Darth', 'VADERADE', 'Human Resources', 'Death Star', '06660', 'Space', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'));
+
+INSERT INTO users (first_name, last_name, service, username, email) VALUES 
+  ('Berney', 'Beckett', 'IT', 'djibh', 'contact@beckett.com');
+
+INSERT INTO services (title) VALUES 
+  ('Rhumatologie'), 
+  ('Psychiatrie'), 
+  ('Ophtalmologie'), 
+  ('Toxicologie'), 
+  ('Pédiatrie'), 
+  ('Neurologie'), 
+  ('Chirurgie'), 
+  ('Urgences adultes'), 
+  ('Urgences enfants'), 
+  ('Pneumologie');
