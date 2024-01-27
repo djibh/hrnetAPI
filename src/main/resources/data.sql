@@ -30,9 +30,9 @@ CREATE TABLE Users (
     CONSTRAINT UQ_Users_Username UNIQUE (username)
 );
 
-DROP TABLE IF EXISTS Services;
+DROP TABLE IF EXISTS Departments;
 
-CREATE TABLE Services (
+CREATE TABLE Departments (
     id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title      VARCHAR(50) NOT NULL,
     CONSTRAINT UQ_Services_Title UNIQUE (title)
@@ -68,7 +68,7 @@ CREATE TABLE Services (
 --     CONSTRAINT UQ_Events_Type UNIQUE (type)
 -- );
  
-INSERT INTO patients (first_name, last_name, department, address, postal_code, city, admission_date, birth_date) VALUES
+INSERT INTO Patients (first_name, last_name, department, address, postal_code, city, admission_date, birth_date) VALUES
   ('Chuck', 'BORRIS', 'Legal', '123, Roundhouse Kick Lane', '75001', 'Walker', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Omar', 'SIMPSON', 'Engineering', '742 Evergreen Terrace', '62701', 'Springfield', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Barry', 'POTTER', 'Marketing', '4 Privet Drive', '10000', 'Little Whinging', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
@@ -79,10 +79,10 @@ INSERT INTO patients (first_name, last_name, department, address, postal_code, c
   ('Jack', 'SPARROWDOUGHNUT', 'Human Resources', 'Black Pearl', '55555', 'Tortuga', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Darth', 'VADERADE', 'Human Resources', 'Death Star', '06660', 'Space', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'));
 
-INSERT INTO users (first_name, last_name, service, username, email) VALUES 
+INSERT INTO Users (first_name, last_name, service, username, email) VALUES 
   ('Berney', 'Beckett', 'IT', 'djibh', 'contact@beckett.com');
 
-INSERT INTO services (title) VALUES 
+INSERT INTO Departments (title) VALUES 
   ('Rhumatologie'), 
   ('Psychiatrie'), 
   ('Ophtalmologie'), 
