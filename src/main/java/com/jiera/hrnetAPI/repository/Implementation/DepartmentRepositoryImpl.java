@@ -42,6 +42,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository<Department
     private SqlParameterSource getSqlParameterSource(Department department) {
         return new MapSqlParameterSource()
                 .addValue("title", department.getTitle())
-                .addValue("title", department.getManager());
+                .addValue("manager", department.getManager())
+                .addValue("phone", department.getPhone());
     }
 }

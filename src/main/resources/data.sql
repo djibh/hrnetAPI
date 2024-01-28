@@ -21,6 +21,7 @@ CREATE TABLE Departments (
     id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title      VARCHAR(50) NOT NULL,
     manager    VARCHAR(50) NOT NULL,
+    phone      VARCHAR(50) NOT NULL,
     CONSTRAINT UQ_Services_Title UNIQUE (title)
 );
 
@@ -88,14 +89,14 @@ INSERT INTO Patients (first_name, last_name, department, address, postal_code, c
 INSERT INTO Users (first_name, last_name, service, username, email) VALUES 
   ('Berney', 'Beckett', 'IT', 'djibh', 'contact@beckett.com');
 
-INSERT INTO Departments (title, manager) VALUES 
-  ('Rhumatologie', 'Dr. Henrietta Bonsens'), 
-  ('Psychiatrie', 'Dr. Lucille Guéritout'), 
-  ('Ophtalmologie', 'Dr. Auguste Rirelais'), 
-  ('Toxicologie', 'Dr. Rosalie Panacée'), 
-  ('Pédiatrie', 'Dr. Gaston Bienportant'), 
-  ('Neurologie', 'Dr. Hortense Remèdes'), 
-  ('Chirurgie', 'Dr. Félix Médiciné'), 
-  ('Urgences adultes', 'Dr. Odette Panacéo'), 
-  ('Urgences enfants', 'Dr. Romaine Santéclair'), 
-  ('Pneumologie', 'Dr. Théo Panacotta');
+INSERT INTO Departments (title, manager, phone) VALUES 
+  ('Rhumatologie', 'Dr. Henrietta Bonsens', '03 88 11 22 33'), 
+  ('Psychiatrie', 'Dr. Lucille Guéritout', '03 88 44 55 66'), 
+  ('Ophtalmologie', 'Dr. Auguste Rirelais', '03 88 77 88 99'), 
+  ('Toxicologie', 'Dr. Rosalie Panacée', '03 88 33 44 55'), 
+  ('Pédiatrie', 'Dr. Gaston Bienportant', '03 88 66 77 88'), 
+  ('Neurologie', 'Dr. Hortense Remèdes', '03 88 22 33 44'), 
+  ('Chirurgie', 'Dr. Félix Médiciné', '03 88 55 66 77'), 
+  ('Urgences adultes', 'Dr. Odette Panacéo', '03 88 88 99 00'), 
+  ('Urgences enfants', 'Dr. Romaine Santéclair', '03 88 00 11 22'), 
+  ('Pneumologie', 'Dr. Théo Panacotta', '03 88 99 00 11');
