@@ -92,7 +92,7 @@ INSERT INTO Departments (title, manager) VALUES
   ('Rhumatologie', 'Dr. Henrietta Bonsens'), 
   ('Psychiatrie', 'Dr. Lucille Guéritout'), 
   ('Ophtalmologie', 'Dr. Auguste Rirelais'), 
-  ('Toxicologie'), 'Dr. Rosalie Panacée', 
+  ('Toxicologie', 'Dr. Rosalie Panacée'), 
   ('Pédiatrie', 'Dr. Gaston Bienportant'), 
   ('Neurologie', 'Dr. Hortense Remèdes'), 
   ('Chirurgie', 'Dr. Félix Médiciné'), 
