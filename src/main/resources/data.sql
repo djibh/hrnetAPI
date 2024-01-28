@@ -4,38 +4,44 @@ SET NAMES 'UTF8MB4'; -- used to set the character encoding for data sent between
 SET time_zone = '+02:00';
 
 DROP TABLE IF EXISTS Patients; 
- 
 CREATE TABLE Patients (
-    id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name   VARCHAR(50) NOT NULL,
-    last_name    VARCHAR(50) NOT NULL,
-    address      VARCHAR(255) DEFAULT NULL,
+    id              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name      VARCHAR(50) NOT NULL,
+    last_name       VARCHAR(50) NOT NULL,
+    address         VARCHAR(255) DEFAULT NULL,
     department      VARCHAR(50) DEFAULT NULL,
-    postal_code  VARCHAR(10) DEFAULT NULL,
-    city         VARCHAR(100) DEFAULT NULL,
-    admission_date   DATE DEFAULT NULL,
-    birth_date   DATE DEFAULT NULL
-);
-
-DROP TABLE IF EXISTS Users;
-
-CREATE TABLE Users (
-    id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name   VARCHAR(50) NOT NULL,
-    last_name    VARCHAR(50) NOT NULL,
-    username     VARCHAR(50) NOT NULL,
-    service      VARCHAR(50) NOT NULL,
-    email        VARCHAR(255) DEFAULT NULL,
-    CONSTRAINT UQ_Users_Email UNIQUE (email),
-    CONSTRAINT UQ_Users_Username UNIQUE (username)
+    postal_code     VARCHAR(10) DEFAULT NULL,
+    city            VARCHAR(100) DEFAULT NULL,
+    admission_date  DATE DEFAULT NULL,
+    birth_date      DATE DEFAULT NULL
 );
 
 DROP TABLE IF EXISTS Departments;
-
 CREATE TABLE Departments (
     id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title      VARCHAR(50) NOT NULL,
+    manager    VARCHAR(50) NOT NULL,
     CONSTRAINT UQ_Services_Title UNIQUE (title)
+);
+
+CREATE TABLE PatientsDepartments (
+    patient_id BIGINT UNSIGNED NOT NULL,
+    department_id BIGINT UNSIGNED NOT NULL,
+    PRIMARY KEY (patient_id, department_id),
+    FOREIGN KEY (patient_id) REFERENCES Patients(id),
+    FOREIGN KEY (department_id) REFERENCES Departments(id)
+);
+
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users (
+    id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name  VARCHAR(50) NOT NULL,
+    last_name   VARCHAR(50) NOT NULL,
+    username    VARCHAR(50) NOT NULL,
+    service     VARCHAR(50) NOT NULL,
+    email       VARCHAR(255) DEFAULT NULL,
+    CONSTRAINT UQ_Users_Email UNIQUE (email),
+    CONSTRAINT UQ_Users_Username UNIQUE (username)
 );
 
 -- DROP TABLE IF EXISTS Roles;
@@ -82,14 +88,14 @@ INSERT INTO Patients (first_name, last_name, department, address, postal_code, c
 INSERT INTO Users (first_name, last_name, service, username, email) VALUES 
   ('Berney', 'Beckett', 'IT', 'djibh', 'contact@beckett.com');
 
-INSERT INTO Departments (title) VALUES 
-  ('Rhumatologie'), 
-  ('Psychiatrie'), 
-  ('Ophtalmologie'), 
-  ('Toxicologie'), 
-  ('Pédiatrie'), 
-  ('Neurologie'), 
-  ('Chirurgie'), 
-  ('Urgences adultes'), 
-  ('Urgences enfants'), 
-  ('Pneumologie');
+INSERT INTO Departments (title, manager) VALUES 
+  ('Rhumatologie', 'Dr. Henrietta Bonsens'), 
+  ('Psychiatrie', 'Dr. Lucille Guéritout'), 
+  ('Ophtalmologie', 'Dr. Auguste Rirelais'), 
+  ('Toxicologie'), 'Dr. Rosalie Panacée', 
+  ('Pédiatrie', 'Dr. Gaston Bienportant'), 
+  ('Neurologie', 'Dr. Hortense Remèdes'), 
+  ('Chirurgie', 'Dr. Félix Médiciné'), 
+  ('Urgences adultes', 'Dr. Odette Panacéo'), 
+  ('Urgences enfants', 'Dr. Romaine Santéclair'), 
+  ('Pneumologie', 'Dr. Théo Panacotta');
