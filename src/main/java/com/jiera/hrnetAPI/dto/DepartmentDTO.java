@@ -8,5 +8,5 @@ public class DepartmentDTO {
     private String title;
     private String manager;
     private String phone;
-
+    private String numberOfPatients;
 }

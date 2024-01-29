@@ -18,4 +18,5 @@ public class Department {
     private String title;
     private String manager;
     private String phone;
+    private String numberOfPatients;
 }
