@@ -20,7 +20,7 @@ spring:
 logging:
   level:
     root: ERROR
-    "[com.jiera.hrnetAPI]": INFO
+    "[com.jiera.klepiosAPI]": INFO
     "[org.springframework.boot.web.embedded.tomcat]": INFO
 server:
   port: 5000
