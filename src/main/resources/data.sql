@@ -42,9 +42,11 @@ CREATE TABLE Users (
     id          BIGINT AUTO_INCREMENT PRIMARY KEY,
     first_name  VARCHAR(50) NOT NULL,
     last_name   VARCHAR(50) NOT NULL,
-    username    VARCHAR(50) NOT NULL,
     service     VARCHAR(50) NOT NULL,
+    username    VARCHAR(50) NOT NULL,
+    password    VARCHAR(100) NOT NULL,
     email       VARCHAR(255) DEFAULT NULL,
+    role       VARCHAR(255) DEFAULT NULL,
     CONSTRAINT UQ_Users_Email UNIQUE (email),
     CONSTRAINT UQ_Users_Username UNIQUE (username)
 );
@@ -126,8 +128,9 @@ INSERT INTO Patients (first_name, last_name, department, address, postal_code, c
   ('Buzz', 'LIGHTYEAR', 'Urgences enfants', 'Star Command', '12345', 'Space', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y')),
   ('Yoda', 'FORCEMASTER', 'Pneumologie', 'Dagobah', '98765', 'Galaxy Far Far Away', STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'), STR_TO_DATE(DATE_FORMAT(NOW(), '%d/%m/%Y'), '%d/%m/%Y'));
 
-INSERT INTO Users (first_name, last_name, service, username, email) VALUES 
-  ('Berney', 'Beckett', 'IT', 'djibh', 'contact@beckett.com');
+INSERT INTO Users (first_name, last_name, service, username, password, email, role) VALUES 
+  ('Berney', 'Beckett', 'IT', 'BerneyBeckett', '$2y$10$zVvrf3kNcvTKkrCHQEzyduZYCH2EtPdPcA/Nfg/tbUJdTBMwqtgAm', 'contact@beckett.com', 'ADMIN'),
+  ('Julien', 'Riera', 'IT', 'JulienRiera', '$2y$10$0hwNhlnN/97kNdhIoQwav.uqu6UXHuuvdjrzfiGYTaEN4TbAcwFD.', 'contact@riera.com', 'USER');
 
 INSERT INTO Departments (title, manager, phone) VALUES 
   ('Rhumatologie', 'Dr. Henrietta Bonsens', '03 88 11 22 33'), 
