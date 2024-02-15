@@ -24,7 +24,6 @@ public class AppUserServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser user = userRepository.findByUsername(username);
-
         return new User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user.getRole()));
     }
 

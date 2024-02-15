@@ -25,24 +25,12 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // http.authorizeHttpRequests(
-        // (requests) -> requests.requestMatchers("/login",
-        // "login").permitAll().anyRequest().authenticated())
-        // .formLogin((form) ->
-        // form.loginPage("/login").permitAll()).logout((logout)
-        // ->
-        // logout.permitAll());
-
-        // http.authorizeHttpRequests((requests) ->
-        // requests.requestMatchers("*").permitAll());
-
         return http.authorizeHttpRequests(auth -> {
-            // auth.requestMatchers("/api/*").permitAll();
             auth.requestMatchers("/login").permitAll();
             auth.requestMatchers("/api/departments").hasRole("ADMIN");
             auth.requestMatchers("/api/patients").hasRole("USER");
             auth.anyRequest().authenticated();
-        }).formLogin(Customizer.withDefaults()).build();
+        }).formLogin(Customizer.withDefaults()).oauth2Login(Customizer.withDefaults()).build();
     }
 
     @Bean
